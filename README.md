@@ -1,2 +1,1 @@
-# tddforums
-Forum by laravel
+# my-template

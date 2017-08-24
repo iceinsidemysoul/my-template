@@ -1,6 +1,44 @@
-var app = new Vue({
+// navbar burger toggle
+document.addEventListener('DOMContentLoaded', function () {
+    // add is-active class to current menu-item
+    var path_name = document.location.pathname;
+  var menu_list = document.querySelectorAll('.navbar-start>.navbar-item');
+  var menu_dropdown_list = [];
+  menu_list.forEach(function (each_menu) {
+    each_menu.querySelectorAll('.navbar-item').forEach(function (each_menu_item) {
+        menu_dropdown_list.push(each_menu_item);
+    });
+  });
+  menu_dropdown_list.forEach(function (each) {
+    if (each.getAttribute('href') == path_name){
+        each.classList.add('is-active');
+        each.parentElement.classList.add('is-active');
+    } else {
+        each.classList.remove('is-active');
+    }
+  });
 
-	el: '#app',
+  // Get all "navbar-burger" elements
+  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any nav burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach(function ($el) {
+      $el.addEventListener('click', function () {
+
+        // Get the target from the "data-target" attribute
+        var target = $el.dataset.target;
+        var $target = document.getElementById(target);
+
+        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+        $el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
 
 });
 
@@ -72,4 +110,8 @@ Vue.component('tab', {
     },
 });
 
+var app = new Vue({
 
+    el: '#app',
+
+});

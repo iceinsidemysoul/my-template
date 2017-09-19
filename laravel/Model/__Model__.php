@@ -29,5 +29,7 @@ class __Model__ extends Model;
   {
     return $this->belongsToMany('');
   }
+  
+  // TODO:: add methods about date format and another
  
  }
